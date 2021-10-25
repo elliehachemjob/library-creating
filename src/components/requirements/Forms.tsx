@@ -15,7 +15,12 @@ import {
   Checkbox,
   Button,
 } from "rbx";
-import { faCheck, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faEnvelope,
+  faLock,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
