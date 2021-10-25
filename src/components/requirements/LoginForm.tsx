@@ -18,7 +18,11 @@ import {
 import { faCheck, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const Requirements = (props) => {
+interface Props {
+  joinRoom: (user: string) => Promise<void>;
+}
+
+export const LoginForm: React.FC<Props> = (props: any): any => {
   const loginHandler = () => {
     axios
       .post(`http://localhost:1589/api/users/login`, {
@@ -28,9 +32,11 @@ export const Requirements = (props) => {
       })
       .then((res) => {
         console.log(` data is ${JSON.stringify(res)}`);
+        // @ts-ignore
         if (res.data === "Logged In Successfully") {
           alert("sucess");
           props.joinRoom(user1);
+          // @ts-ignore
         } else if (res.data === "Make sure email and password are correct") {
           alert("Make sure email and password are correct ");
         }
@@ -40,9 +46,8 @@ export const Requirements = (props) => {
       });
   };
 
-  const [user1, setUser1] = useState();
-  const [password1, setPassword1] = useState();
-  const [timer, setTimer] = useState(null);
+  const [user1, setUser1] = useState<string>();
+  const [password1, setPassword1] = useState<string>();
   return (
     <Level>
       <Level.Item textAlign="centered">
@@ -63,11 +68,10 @@ export const Requirements = (props) => {
               <Field>
                 <Control iconLeft iconRight>
                   <Input
-                    //  disabled={loading}
                     type="email"
                     placeholder="Email"
                     value={user1}
-                    onChange={(e) => setUser1(e.target.value)}
+                    onChange={(e: any) => setUser1(e.target.value)}
                   />
 
                   <Icon size="small" align="left">
@@ -83,7 +87,7 @@ export const Requirements = (props) => {
                   <Input
                     type="password"
                     placeholder="Password"
-                    onChange={(e) => setPassword1(e.target.value)}
+                    onChange={(e: any) => setPassword1(e.target.value)}
                     value={password1}
                   />
 
@@ -100,6 +104,7 @@ export const Requirements = (props) => {
                     />{" "}
                     Remember me
                   </Label>
+                  <Label></Label>
                 </Control>
               </Field>
               <Field>
