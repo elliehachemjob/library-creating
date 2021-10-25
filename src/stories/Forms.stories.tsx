@@ -1,9 +1,13 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { LoginForm } from "../components/Requirements";
+import { LoginForm, SignUpForm } from "../components/Requirements";
 
-const stories = storiesOf("App test", module);
+const stories = storiesOf("React-Singalr-Components", module);
 
-stories.add("App", () => {
+stories.add("LoginForm", () => {
   return <LoginForm />;
+});
+
+stories.add("SignUpForm", () => {
+  return <SignUpForm />;
 });
